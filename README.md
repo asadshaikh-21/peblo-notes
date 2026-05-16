@@ -230,16 +230,6 @@ npm install
 cp .env.example .env
 ```
 
-Edit `.env`:
-```env
-PORT=5000
-MONGO_URI=mongodb+srv://your_username:your_password@cluster.mongodb.net/peblo
-JWT_SECRET=your_super_secret_jwt_key
-JWT_EXPIRE=7d
-GEMINI_API_KEY=your_gemini_api_key
-NODE_ENV=development
-```
-
 ```bash
 npm run dev
 ```
