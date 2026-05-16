@@ -28,13 +28,25 @@ export default function NoteEditor({ note, onClose, onUpdate }: NoteEditorProps)
   const [shareUrl, setShareUrl] = useState('')
   const [copied, setCopied] = useState(false)
   const [saving, setSaving] = useState(false)
-  const saveTimer = useRef<ReturnType<typeof setTimeout>>()
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  useEffect(() => {
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+useEffect(() => {
+  if (saveTimer.current) {
     clearTimeout(saveTimer.current)
-    saveTimer.current = setTimeout(() => saveNote(), 1500)
-    return () => clearTimeout(saveTimer.current)
-  }, [title, content, tags])
+  }
+
+  saveTimer.current = setTimeout(() => {
+    saveNote()
+  }, 1500)
+
+  return () => {
+    if (saveTimer.current) {
+      clearTimeout(saveTimer.current)
+    }
+  }
+}, [title, content, tags])
 
   const saveNote = async () => {
     setSaving(true)
