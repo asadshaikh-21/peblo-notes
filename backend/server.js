@@ -9,12 +9,16 @@ connectDB()
 
 const app = express()
 
+const cors = require('cors')
+
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://peblo-notes-986o.onrender.com/'
+    'https://peblo-notes-zjnq.vercel.app'
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }))
 app.use(express.json({ limit: '10kb' }))
 
