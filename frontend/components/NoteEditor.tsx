@@ -28,7 +28,6 @@ export default function NoteEditor({ note, onClose, onUpdate }: NoteEditorProps)
   const [shareUrl, setShareUrl] = useState('')
   const [copied, setCopied] = useState(false)
   const [saving, setSaving] = useState(false)
-  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
